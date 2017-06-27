@@ -33,7 +33,7 @@ public class DefinitionSteps {
 
     @Then("I have multiple data entered")
     public void thenVerifyMultipleEntryData() {
-        endUser.verifySingleEntry();
+        endUser.verifyMultipleEntry();
     }
 
     @When("I click to delete an existing hotel")

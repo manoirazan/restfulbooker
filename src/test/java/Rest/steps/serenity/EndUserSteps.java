@@ -29,6 +29,13 @@ public class EndUserSteps extends ScenarioSteps {
         assertThat(bookerPage.containerClass().getText(), containsString("woo.k@emailbooker.com"));
     }
 
+    @Step
+    public void verifyMultipleEntry(){
+        assertThat(bookerPage.containerClass().getText(), containsString("Greyhound Inn"));
+        assertThat(bookerPage.containerClass().getText(), containsString("RedFox Inn"));
+        assertThat(bookerPage.containerClass().getText(), containsString("Portsmouth Inn"));
+    }
+
 
     @Step
     public void createMultipleEntry(){
