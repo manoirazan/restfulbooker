@@ -31,4 +31,18 @@ public class DefinitionSteps {
         endUser.verifySingleEntry();
     }
 
+    @Then("I have multiple data entered")
+    public void thenVerifyMultipleEntryData() {
+        endUser.verifySingleEntry();
+    }
+
+    @When("I click to delete an existing hotel")
+    public void whenIDeleteAHotel() {
+        endUser.removeExistingHotel();
+    }
+    @Then("the hotel is removed from the list")
+    public void thenTheHotelIsRemoved() {
+        endUser.verifyHotelIsRemoved();
+    }
+
 }

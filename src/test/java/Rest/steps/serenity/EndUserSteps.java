@@ -1,8 +1,11 @@
 package Rest.steps.serenity;
 
 import Rest.pages.BookerPage;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.junit.Assert;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -11,6 +14,7 @@ import static org.hamcrest.Matchers.hasItem;
 public class EndUserSteps extends ScenarioSteps {
 
     BookerPage bookerPage;
+
 
     @Step
     public void createSingleEntry(){
@@ -44,6 +48,23 @@ public class EndUserSteps extends ScenarioSteps {
 
     @Step
     public void logoutIsPresent(){
+        if(bookerPage.login().isCurrentlyVisible()){
+            bookerPage.login().click();
+            bookerPage.username().type("admin");
+            bookerPage.password().type("password");
+            bookerPage.doLogin().click();
+        }
         bookerPage.logout().isCurrentlyVisible();
     }
+
+    @Step
+    public void removeExistingHotel(){
+        getDriver().findElement(By.xpath("/span[contains(text(), 'Greyhound Inn')]/../following-sibling::section/span[@class*='hotelDelete']")).click();
+    }
+
+    @Step
+    public void verifyHotelIsRemoved(){
+        Assert.assertEquals(bookerPage.containerClass().getText(), false, containsString("'Greyhound Inn"));
+    }
+
 }

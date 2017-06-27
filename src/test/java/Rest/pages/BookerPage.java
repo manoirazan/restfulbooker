@@ -19,6 +19,20 @@ public class BookerPage extends PageObject {
     public WebElementFacade logout(){
         return  element(By.cssSelector("#logout"));
     }
+    public WebElementFacade login(){
+        return  element(By.linkText("Login"));
+    }
+
+    public WebElementFacade doLogin(){
+        return  element(By.cssSelector("#doLogin"));
+    }
+    public WebElementFacade username(){
+        return  element(By.cssSelector("username"));
+    }
+
+    public WebElementFacade password(){
+        return  element(By.cssSelector("password"));
+    }
 
     public WebElementFacade hotelName(){
         return  element(By.cssSelector("#hotelName"));
